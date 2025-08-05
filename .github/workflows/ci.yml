@@ -3,7 +3,8 @@ name: Backend CI
 on:
   push:
     branches:
-      - main # Trigger CI on pushes to the main branch
+      - main  # Trigger CI on pushes to the main branch
+
 
 jobs:
   test:
@@ -13,6 +14,7 @@ jobs:
     strategy:
       matrix:
         node-version: [22] # Test on multiple Node.js versions
+
 
     environment: MONGO_URI
 
@@ -55,6 +57,7 @@ jobs:
           sudo rm -rf ./build
           yarn install
           yarn run build
+      
 
       # Run backend tests
       - name: Run Backend Tests
@@ -64,6 +67,7 @@ jobs:
           PORT: ${{ secrets.PORT }}
         working-directory: ./backend
         run: npm test
+
 
       - run: npm ci
       - run: |
