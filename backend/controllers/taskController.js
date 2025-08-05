@@ -9,13 +9,13 @@ const getTasks = async (req, res) => {
 };
 
 const addTask = async (req, res) => {
-  const { title, description, dueDate } = req.body;
+  const { title, description, deadline } = req.body;
   try {
     const task = await Task.create({
       userId: req.user.id,
       title,
       description,
-      deadline: dueDate,
+      deadline: deadline,
     });
     res.status(201).json(task);
   } catch (error) {
