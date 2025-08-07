@@ -72,3 +72,5 @@ const updateUserProfile = async (req, res) => {
 };
 
 module.exports = { registerUser, loginUser, updateUserProfile, getProfile };
+
+//added to create a commit
