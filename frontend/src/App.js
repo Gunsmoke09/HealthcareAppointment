@@ -1,24 +1,3 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import BookAppointmentPage from "./pages/BookAppointment";
-import Navbar from './components/Navbar';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Profile from './pages/Profile';
-import Tasks from './pages/Tasks';
-
-function App() {
-  return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/tasks" element={<Tasks />} />
-        <Route path="/book" element={<BookAppointmentPage />} />
-      </Routes>
-    </Router>
-  );
+export default function App() {
+  return <div style={{padding: 24, fontSize: 20}}>APP MOUNTED ✅</div>;
 }
-
-export default App;
