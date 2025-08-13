@@ -24,3 +24,11 @@ const MedicalRecords = () => {
     };
     fetchRecords();
   }, [user]);
+
+  const filteredRecords = records.filter((rec) => {
+    const matchesDate = searchDate ? rec.visitDate.startsWith(searchDate) : true;
+    const matchesDiagnosis = searchDiagnosis
+      ? rec.diagnosis.toLowerCase().includes(searchDiagnosis.toLowerCase())
+      : true;
+    return matchesDate && matchesDiagnosis;
+  });
