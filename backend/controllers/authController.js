@@ -20,7 +20,7 @@ const registerUser = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-// This code is part of a Node.js backend for user authentication and profile management. It includes functions to register a new user, log in an existing user, retrieve the user's profile, and update the user's profile information. The code uses JWT for token generation and bcrypt for password hashing.
+// This code is part of a Node.js backend for user authentication and profile management. It includes functions t register a new user, log in an existing user, retrieve the user's profile, and update the user's profile information. The code uses JWT for token generation and bcrypt for password hashing.
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
