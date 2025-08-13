@@ -24,3 +24,19 @@ const addMedicalRecord = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   };
+
+  const updateMedicalRecord = async (req, res) => {
+    const { visitDate, diagnosis, prescription, notes } = req.body;
+    try {
+      const record = await MedicalRecord.findById(req.params.id);
+      if (!record) return res.status(404).json({ message: 'Medical record not found' });
+      record.visitDate = visitDate || record.visitDate;
+      record.diagnosis = diagnosis || record.diagnosis;
+      record.prescription = prescription || record.prescription;
+      record.notes = notes || record.notes;
+      const updatedRecord = await record.save();
+      res.json(updatedRecord);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
