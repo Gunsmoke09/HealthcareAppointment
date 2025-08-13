@@ -55,3 +55,41 @@ const MedicalRecordForm = ({ records, setRecords, editingRecord, setEditingRecor
       alert('Failed to save record.');
     }
   };
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded mb-6">
+      <h1 className="text-2xl font-bold mb-4">{editingRecord ? 'Edit Medical Record' : 'Add Medical Record'}</h1>
+      <input
+        type="date"
+        value={formData.visitDate}
+        onChange={(e) => setFormData({ ...formData, visitDate: e.target.value })}
+        className="w-full mb-4 p-2 border rounded"
+      />
+      <input
+        type="text"
+        placeholder="Diagnosis"
+        value={formData.diagnosis}
+        onChange={(e) => setFormData({ ...formData, diagnosis: e.target.value })}
+        className="w-full mb-4 p-2 border rounded"
+      />
+      <input
+        type="text"
+        placeholder="Prescription"
+        value={formData.prescription}
+        onChange={(e) => setFormData({ ...formData, prescription: e.target.value })}
+        className="w-full mb-4 p-2 border rounded"
+      />
+      <textarea
+        placeholder="Notes"
+        value={formData.notes}
+        onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+        className="w-full mb-4 p-2 border rounded"
+      />
+      <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded">
+        {editingRecord ? 'Update Record' : 'Add Record'}
+      </button>
+    </form>
+  );
+};
+
+export default MedicalRecordForm;
