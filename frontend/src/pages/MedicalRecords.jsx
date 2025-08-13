@@ -32,3 +32,12 @@ const MedicalRecords = () => {
       : true;
     return matchesDate && matchesDiagnosis;
   });
+
+  return (
+    <div className="container mx-auto p-6">
+      <MedicalRecordForm
+        records={records}
+        setRecords={setRecords}
+        editingRecord={editingRecord}
+        setEditingRecord={setEditingRecord}
+      />
