@@ -41,3 +41,28 @@ const MedicalRecords = () => {
         editingRecord={editingRecord}
         setEditingRecord={setEditingRecord}
       />
+            <div className="bg-white p-4 shadow-md rounded mb-6 flex flex-col md:flex-row md:items-center">
+        <input
+          type="date"
+          value={searchDate}
+          onChange={(e) => setSearchDate(e.target.value)}
+          className="mb-4 md:mb-0 md:mr-4 p-2 border rounded"
+        />
+        <input
+          type="text"
+          placeholder="Search Diagnosis"
+          value={searchDiagnosis}
+          onChange={(e) => setSearchDiagnosis(e.target.value)}
+          className="p-2 border rounded"
+        />
+      </div>
+      <MedicalRecordList
+        records={filteredRecords}
+        setRecords={setRecords}
+        setEditingRecord={setEditingRecord}
+      />
+    </div>
+  );
+};
+
+export default MedicalRecords;
