@@ -17,7 +17,8 @@ const Navbar = () => {
         {user ? (
           <>
             <Link to="/tasks" className="mr-4">Tasks</Link>
-              <Link to="/appointments" className="mr-4">Appointments</Link>
+            <Link to="/appointments" className="mr-4">Appointments</Link>
+            <Link to="/medical-records" className="mr-4">Medical Records</Link>
             <Link to="/profile" className="mr-4">Profile</Link>
             <button
               onClick={handleLogout}
