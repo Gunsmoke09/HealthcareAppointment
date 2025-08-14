@@ -10,10 +10,11 @@ const getAppointments = async (req, res) => {
 };
 
 const addAppointment = async (req, res) => {
-  const { doctor, date, reason, status } = req.body;
+  const { doctor, patientName, date, reason, status } = req.body;
   try {
     const appointment = await Appointment.create({
       userId: req.user.id,
+      patientName,
       doctor,
       date,
       reason,
@@ -26,11 +27,12 @@ const addAppointment = async (req, res) => {
 };
 
 const updateAppointment = async (req, res) => {
-  const { doctor, date, reason, status } = req.body;
+  const { doctor, patientName, date, reason, status } = req.body;
   try {
     const appointment = await Appointment.findById(req.params.id);
     if (!appointment) return res.status(404).json({ message: "Appointment not found" });
     appointment.doctor = doctor || appointment.doctor;
+    appointment.patientName = patientName || appointment.patientName;
     appointment.date = date || appointment.date;
     appointment.reason = reason || appointment.reason;
     appointment.status = status || appointment.status;
