@@ -8,8 +8,8 @@ const MedicalRecords = () => {
   const { user } = useAuth();
   const [records, setRecords] = useState([]);
   const [editingRecord, setEditingRecord] = useState(null);
-  const [searchDate, setSearchDate] = useState('');
-  const [searchDiagnosis, setSearchDiagnosis] = useState('');
+  const [searchName, setSearchName] = useState('');
+  const [searchReason, setSearchReason] = useState('');
 
   useEffect(() => {
     const fetchRecords = async () => {
@@ -26,11 +26,13 @@ const MedicalRecords = () => {
   }, [user]);
 
   const filteredRecords = records.filter((rec) => {
-    const matchesDate = searchDate ? rec.visitDate.startsWith(searchDate) : true;
-    const matchesDiagnosis = searchDiagnosis
-      ? rec.diagnosis.toLowerCase().includes(searchDiagnosis.toLowerCase())
+    const matchesName = searchName
+      ? rec.patientName.toLowerCase().includes(searchName.toLowerCase())
       : true;
-    return matchesDate && matchesDiagnosis;
+    const matchesReason = searchReason
+      ? rec.reasonForVisit.toLowerCase().includes(searchReason.toLowerCase())
+      : true;
+    return matchesName && matchesReason;
   });
 
   return (
@@ -41,19 +43,20 @@ const MedicalRecords = () => {
         editingRecord={editingRecord}
         setEditingRecord={setEditingRecord}
       />
-            <div className="bg-white p-4 shadow-md rounded mb-6 flex flex-col md:flex-row md:items-center">
+      <div className="bg-pink-50 p-4 shadow-md rounded mb-6 flex flex-col md:flex-row md:items-center">
         <input
-          type="date"
-          value={searchDate}
-          onChange={(e) => setSearchDate(e.target.value)}
-          className="mb-4 md:mb-0 md:mr-4 p-2 border rounded"
+          type="text"
+          placeholder="Search Patient"
+          value={searchName}
+          onChange={(e) => setSearchName(e.target.value)}
+          className="mb-4 md:mb-0 md:mr-4 p-2 border border-pink-300 rounded"
         />
         <input
           type="text"
-          placeholder="Search Diagnosis"
-          value={searchDiagnosis}
-          onChange={(e) => setSearchDiagnosis(e.target.value)}
-          className="p-2 border rounded"
+          placeholder="Search Reason"
+          value={searchReason}
+          onChange={(e) => setSearchReason(e.target.value)}
+          className="p-2 border border-pink-300 rounded"
         />
       </div>
       <MedicalRecordList

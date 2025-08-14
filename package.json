@@ -1,7 +1,7 @@
 {
-  "name": "task-manager",
+  "name": "medical-appointment-records-manager",
   "version": "1.0.0",
-  "description": "Complete MERN Task Manager Application",
+  "description": "MERN Medical Appointment and Records Manager",
   "scripts": {
     "install-all": "npm install && npm install --prefix backend && npm install --prefix frontend",
     "start": "concurrently \"npm run prod --prefix backend\" \"npm start --prefix frontend\"",
@@ -12,7 +12,7 @@
     "concurrently": "^7.0.0",
     "mocha": "^11.0.1"
   },
-  "author": "Task Manager Team",
+  "author": "Anant Srivastava, n12138177",
   "license": "ISC",
   "dependencies": {
     "mongodb": "5.5"

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Med App Manager",
+  "name": "Medical Appointment and Records Manager",
   "icons": [
     {
       "src": "favicon.ico",
