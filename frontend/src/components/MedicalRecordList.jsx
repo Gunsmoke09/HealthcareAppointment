@@ -15,7 +15,7 @@ const MedicalRecordList = ({ records, setRecords, setEditingRecord }) => {
       alert('Failed to delete record.');
     }
   };
-
+// This component displays a list of medical records with options to edit or delete each record.
   return (
     <div>
       {records.map((rec) => (        
