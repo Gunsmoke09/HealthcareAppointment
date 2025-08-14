@@ -20,6 +20,7 @@ const AppointmentList = ({ appointments, setAppointments, setEditingAppointment 
       {appointments.map((appt) => (
         <div key={appt._id} className="bg-pink-100 p-4 mb-4 rounded shadow">
           <h2 className="font-bold">Doctor: {appt.doctor}</h2>
+          <p>Patient: {appt.patientName}</p>
           <p>Reason: {appt.reason}</p>
           <p className="text-sm text-gray-500">Date: {new Date(appt.date).toLocaleDateString()}</p>
           <p className="text-sm">Status: {appt.status}</p>

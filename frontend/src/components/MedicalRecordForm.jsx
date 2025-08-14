@@ -69,7 +69,7 @@ const MedicalRecordForm = ({ records, setRecords, editingRecord, setEditingRecor
     <form onSubmit={handleSubmit} className="bg-pink-50 p-6 shadow-md rounded mb-6">
       <h1 className="text-2xl font-bold mb-4 text-pink-700">Patient Information</h1>
       <input
-        type="date"
+        type="text"
         placeholder="Patient Name"
         value={formData.patientName}
         onChange={(e) => setFormData({ ...formData, patientName: e.target.value })}
