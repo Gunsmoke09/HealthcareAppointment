@@ -18,31 +18,31 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20">
+    <div className="max-w-md mx-auto mt-20 bg-pink-100 p-6 rounded">
       <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded">
-        <h1 className="text-2xl font-bold mb-4 text-center">Register</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center text-pink-700">Register</h1>
         <input
           type="text"
           placeholder="Name"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="w-full mb-4 p-2 border rounded"
+          className="w-full mb-4 p-2 border border-pink-300 rounded"
         />
         <input
           type="email"
           placeholder="Email"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="w-full mb-4 p-2 border rounded"
+          className="w-full mb-4 p-2 border border-pink-300 rounded"
         />
         <input
           type="password"
           placeholder="Password"
           value={formData.password}
           onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-          className="w-full mb-4 p-2 border rounded"
+          className="w-full mb-4 p-2 border border-pink-300 rounded"
         />
-        <button type="submit" className="w-full bg-green-600 text-white p-2 rounded">
+        <button type="submit" className="w-full bg-pink-600 text-white p-2 rounded hover:bg-pink-700">
           Register
         </button>
       </form>
