@@ -1,7 +1,7 @@
 {
-  "name": "task-manager-backend",
+  "name": "medical-appointment-records-manager-backend",
   "version": "1.0.0",
-  "description": "Backend for Task Manager App",
+  "description": "Backend for Medical Appointment and Records Manager",
   "main": "server.js",
   "scripts": {
     "test": "mocha",
@@ -26,6 +26,6 @@
     "nodemon": "^2.0.15",
     "sinon": "^19.0.5"
   },
-  "author": "Task Manager Team",
+  "author": "Anant Srivastava, n12138177",
   "license": "ISC"
 }
