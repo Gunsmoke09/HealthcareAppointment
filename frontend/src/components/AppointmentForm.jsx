@@ -4,18 +4,19 @@ import axiosInstance from '../axiosConfig';
 
 const AppointmentForm = ({ appointments, setAppointments, editingAppointment, setEditingAppointment }) => {
   const { user } = useAuth();
-  const [formData, setFormData] = useState({ doctor: '', reason: '', date: '', status: 'scheduled' });
+  const [formData, setFormData] = useState({ patientName: '', doctor: '', reason: '', date: '', status: 'scheduled' });
 
   useEffect(() => {
     if (editingAppointment) {
       setFormData({
+        patientName: editingAppointment.patientName || '',
         doctor: editingAppointment.doctor,
         reason: editingAppointment.reason,
         date: editingAppointment.date,
         status: editingAppointment.status,
       });
     } else {
-      setFormData({ doctor: '', reason: '', date: '', status: 'scheduled' });
+      setFormData({ patientName: '', doctor: '', reason: '', date: '', status: 'scheduled' });
     }
   }, [editingAppointment]);
 
@@ -36,7 +37,7 @@ const AppointmentForm = ({ appointments, setAppointments, editingAppointment, se
         setAppointments([...appointments, response.data]);
       }
       setEditingAppointment(null);
-      setFormData({ doctor: '', reason: '', date: '', status: 'scheduled' });
+      setFormData({ patientName: '', doctor: '', reason: '', date: '', status: 'scheduled' });
     } catch (error) {
       alert('Failed to save appointment.');
     }
@@ -45,6 +46,13 @@ const AppointmentForm = ({ appointments, setAppointments, editingAppointment, se
   return (
   <form onSubmit={handleSubmit} className="bg-pink-50 p-6 shadow-md rounded mb-6">
       <h1 className="text-2xl font-bold mb-4 text-pink-700">{editingAppointment ? 'Edit Appointment' : 'Add Appointment'}</h1>
+      <input
+        type="text"
+        placeholder="Patient"
+        value={formData.patientName}
+        onChange={(e) => setFormData({ ...formData, patientName: e.target.value })}
+        className="w-full mb-4 p-2 border rounded"
+      />
       <input
         type="text"
         placeholder="Doctor"
@@ -70,15 +78,3 @@ const AppointmentForm = ({ appointments, setAppointments, editingAppointment, se
         onChange={(e) => setFormData({ ...formData, status: e.target.value })}
         className="w-full mb-4 p-2 border border-pink-300 rounded"
       >
-        <option value="scheduled">Scheduled</option>
-        <option value="completed">Completed</option>
-        <option value="cancelled">Cancelled</option>
-      </select>
-      <button type="submit" className="w-full bg-pink-600 text-white p-2 rounded hover:bg-pink-700">
-        {editingAppointment ? 'Update Appointment' : 'Add Appointment'}
-      </button>
-    </form>
-  );
-};
-
-export default AppointmentForm;

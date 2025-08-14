@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-pink-600 text-white p-4 flex justify-between items-center">
-      <Link to="/" className="text-2xl font-bold">Medical Appointment and Records Manager</Link>
+      <Link to={user ? '/appointments' : '/'} className="text-2xl font-bold">Medical Appointment and Records Manager</Link>
       <div>
         {user ? (
           <>
