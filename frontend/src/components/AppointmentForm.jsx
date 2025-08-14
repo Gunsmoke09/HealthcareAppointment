@@ -78,3 +78,15 @@ const AppointmentForm = ({ appointments, setAppointments, editingAppointment, se
         onChange={(e) => setFormData({ ...formData, status: e.target.value })}
         className="w-full mb-4 p-2 border border-pink-300 rounded"
       >
+        <option value="scheduled">Scheduled</option>
+        <option value="completed">Completed</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+      <button type="submit" className="w-full bg-pink-600 text-white p-2 rounded hover:bg-pink-700">
+        {editingAppointment ? 'Update Appointment' : 'Add Appointment'}
+      </button>
+    </form>
+  );
+};
+
+export default AppointmentForm;
