@@ -16,6 +16,8 @@ A full-stack web application for managing healthcare appointments and medical re
 * Delete Medical Records
 * View Medical Records
 * Update Medical Records
+* Search medical records by patient name
+* Search medical records by reason for visit
 
 ---
 
@@ -28,9 +30,19 @@ A full-stack web application for managing healthcare appointments and medical re
 
 ---
 ## how to run-
+- To run locally -
 ```bash
 npm run dev
 ```
+(make sure the backend/src/axiosConfig.jsx has localhost ip active (not commented out))
+- To run online-
+    - Change the ip of live instance to the ip in the backend/src/axiosConfig.jsx file
+    - Push to github (to the main branch)
+    - pm2 status must show "online" for both backend and frontend
+    - type "http://<<live-instance-ip>>" in the browser
+    - This will run the web application live on the server
+---
+
 ## testing-
 ```bash
 cd backend
@@ -39,9 +51,9 @@ npm run test
 
 **Github repo link**- https://github.com/Gunsmoke09/HealthcareAppointment
 ---
-**MongoDb cluster id and password that is used in the MONGO_URI**
-mongodb- Homer
-pwd- Simpson
+**MongoDb cluster id and password that is used in the MONGO_URI** -
+    mongodb- Homer
+    pwd- Simpson
 ---
 **Instance Public IP at the time of creating this file**
 - 54.206.232.24
