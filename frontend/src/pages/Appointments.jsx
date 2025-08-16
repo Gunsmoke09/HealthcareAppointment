@@ -3,6 +3,7 @@ import axiosInstance from '../axiosConfig';
 import AppointmentForm from '../components/AppointmentForm';
 import AppointmentList from '../components/AppointmentList';
 import { useAuth } from '../context/AuthContext';
+import { Navigate } from 'react-router-dom';
 
 const Appointments = () => {
   const { user } = useAuth();
@@ -10,6 +11,7 @@ const Appointments = () => {
   const [editingAppointment, setEditingAppointment] = useState(null);
 
   useEffect(() => {
+    if (!user) return;
     const fetchAppointments = async () => {
       try {
         const response = await axiosInstance.get('/api/appointments', {
@@ -23,6 +25,11 @@ const Appointments = () => {
 
     fetchAppointments();
   }, [user]);
+
+  // Redirect unauthenticated users to login page
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <div className="container mx-auto p-6">

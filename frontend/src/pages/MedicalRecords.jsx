@@ -3,6 +3,7 @@ import axiosInstance from '../axiosConfig';
 import MedicalRecordForm from '../components/MedicalRecordForm';
 import MedicalRecordList from '../components/MedicalRecordList';
 import { useAuth } from '../context/AuthContext';
+import { Navigate } from 'react-router-dom';
 
 const MedicalRecords = () => {
   const { user } = useAuth();
@@ -12,6 +13,7 @@ const MedicalRecords = () => {
   const [searchReason, setSearchReason] = useState('');
 
   useEffect(() => {
+    if (!user) return;
     const fetchRecords = async () => {
       try {
         const response = await axiosInstance.get('/api/medical-records', {
@@ -24,6 +26,10 @@ const MedicalRecords = () => {
     };
     fetchRecords();
   }, [user]);
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   const filteredRecords = records.filter((rec) => {
     const matchesName = searchName
